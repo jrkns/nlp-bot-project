@@ -46,8 +46,9 @@ def _get_pos_model():
     return model_pos
 
 
+global _word_list_intent
 global _word_to_idx_intent
-_word_to_idx_intent = _load(os.path.dirname(
+_word_list_intent, _word_to_idx_intent = _load(os.path.dirname(
     os.path.abspath(__file__)) + '/dump/word_to_idx_intent.pkl')
 
 global _word_to_idx
@@ -94,6 +95,34 @@ def _pos_idx_to_pos(classes, length):
     return pos
 
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+
+    return False
+
+
+def _word_map(w):
+    if w in _word_list_intent:
+        return _word_to_idx_intent[w]
+    else:
+        if w == "<\s>":
+            return _word_to_idx_intent['</s>']
+        if is_number(w):
+            return 1
+        return 0
+
+
 def _word_map(word):
     if word in _word_to_idx_intent:
         return _word_to_idx_intent[word]
@@ -105,7 +134,7 @@ def tag(tokens):
         return []
     results = []
     for i in range(0, len(tokens), 20):
-        batch = tokens[i:i+20]
+        batch = tokens[i:i + 20]
         ready_to_feed = _pos_word_to_idx(batch)
         results.extend(_pos_idx_to_pos(
             _pos_model.predict_classes(ready_to_feed)[0], len(batch)))
