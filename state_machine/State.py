@@ -1,7 +1,7 @@
 from .form import is_fulfil
 from .form import merge_information
 from .output import require_information, answer_and_reset
-from .filebase import exist, add_user, update_state, get_state
+from .filebase import exist, add_user, update_state, get_state, remove_user
 
 
 transition = {
@@ -39,9 +39,12 @@ class StateMachine:
             self.state = 0
             self.intention = -1
             self.information = {
-                'cmd': 'asdpifojsapfoiajsdf',
+                'cmd': '',
                 'course': '',
                 'period': '',
+                'date': '',
+                'month': '',
+                'year': '',
             }
             add_user(self.token)
         else:
@@ -65,9 +68,12 @@ class StateMachine:
     def restart(self):
         self.intention = -1
         self.information = {
-            'cmd': 'asdpifojsapfoiajsdf',
+            'cmd': '',
             'course': '',
             'period': '',
+            'date': '',
+            'month': '',
+            'year': '',
         }
 
     def load_from_filebase(self):
@@ -85,3 +91,6 @@ class StateMachine:
         }
         update_state(self.token, this_machine)
         return this_machine
+
+    def remove(self):
+        remove_user(self.token)
