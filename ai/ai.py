@@ -123,12 +123,6 @@ def _word_map(w):
         return 0
 
 
-def _word_map(word):
-    if word in _word_to_idx_intent:
-        return _word_to_idx_intent[word]
-    return _word_to_idx_intent['UNK']
-
-
 def tag(tokens):
     if len(tokens) == 0:
         return []
@@ -144,7 +138,7 @@ def tag(tokens):
 def classify(tokens):
     if len(tokens) == 0:
         return []
-    to_index = [_word_map(i) for i in tokens]
+    to_index = [_word_map(i) for i in tokens + ['</s>']]
     ready_to_feed = pad_sequences([np.array(to_index)], maxlen=400)
     pred_prob = _intent_model.predict(ready_to_feed)
     pred_cls = np.argmax(pred_prob, 1)
