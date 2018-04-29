@@ -1,0 +1,20 @@
+{
+    "course": [
+        "วิชาอะไรเหรอ"
+    ],
+    "period": [
+        "ask_for_period"
+    ],
+    "cmn": [
+        "ask_for_cmn"
+    ],
+    "date": [
+        "ask_for_date"
+    ],
+    "month": [
+        "ask_for_month"
+    ],
+    "year": [
+        "ask_for_year"
+    ]
+}

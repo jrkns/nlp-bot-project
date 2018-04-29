@@ -1,0 +1,5 @@
+*.pyc
+state_machine/.ipynb_checkpoints/*
+.vscode
+.ipynb_checkpoints
+ai/.DS_Store
