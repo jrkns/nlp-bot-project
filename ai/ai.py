@@ -19,7 +19,7 @@ def _load(path):
 
 def _get_intent_model():
     input1 = Input(shape=(400,))
-    x = Embedding(378, 150)(input1)
+    x = Embedding(379, 150)(input1)
     x = Dropout(0.5)(x)
     x = Bidirectional(GRU(64))(x)
     x = Dense(256, activation='relu')(x)
@@ -60,7 +60,7 @@ _idx_to_pos = {1: 'period', 2: 'cmn',
 
 global _intent_map
 _intent_map = {0: 'place', 1: 'description', 2: 'time',
-               3: 'event', 4: 'stats', 5: 'slide', 6: 'tutor'}
+               3: 'event', 4: 'stats', 6: 'slide', 5: 'tutor'}
 
 global _intent_model
 _intent_model = _get_intent_model()
@@ -114,6 +114,8 @@ def is_number(s):
 
 def _word_map(w):
     if w in _word_list_intent:
+        if is_number(w):
+            return 1
         return _word_to_idx_intent[w]
     else:
         if w == "<\s>":
