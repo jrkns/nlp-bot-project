@@ -2,4 +2,6 @@
 state_machine/.ipynb_checkpoints/*
 .vscode
 .ipynb_checkpoints
-ai/.DS_Store
+app/.DS_Store
+doc/.DS_Store
+.DS_Store
