@@ -10,3 +10,4 @@ Werkzeug==0.12.2
 cunlp==0.2.7
 tensorflow==1.4.0rc0
 h5py==2.7.1
+Pyrebase==3.0.27

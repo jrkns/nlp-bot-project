@@ -1,12 +1,12 @@
 import pyrebase
 
 config = {
-    "apiKey": "AIzaSyDTSs-TCJ7obcJUtiQfeaMqOnBqLJJU3RU",
-    "authDomain": "nlp-line-chatbot.firebaseapp.com",
-    "databaseURL": "https://nlp-line-chatbot.firebaseio.com",
-    "projectId": "nlp-line-chatbot",
-    "storageBucket": "nlp-line-chatbot.appspot.com",
-    "messagingSenderId": "601884581282"
+    "apiKey": "SECRET",
+    "authDomain": "SECRET",
+    "databaseURL": "SECRET",
+    "projectId": "SECRET",
+    "storageBucket": "SECRET",
+    "messagingSenderId": "SECRET"
 }
 
 firebase = pyrebase.initialize_app(config)
