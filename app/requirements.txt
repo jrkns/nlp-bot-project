@@ -6,7 +6,7 @@ MarkupSafe==1.0
 requests==2.18.1
 six==1.10.0
 urllib3==1.21.1
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 cunlp==0.2.7
 tensorflow==1.4.0rc0
 h5py==2.7.1
